@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://tradeez-backend-j1h9.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
