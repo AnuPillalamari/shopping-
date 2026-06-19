@@ -27,7 +27,10 @@ connectDB();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "https://shopping-anu21.vercel.app",
+  credentials: true
+}));
 app.use(express.json());
 
 // Base Health Check
@@ -54,7 +57,7 @@ setInterval(async () => {
 if (process.env.NODE_ENV === 'production') {
   const frontendBuildPath = path.join(__dirname, '../frontend/dist');
   app.use(express.static(frontendBuildPath));
-  
+
   app.get('*', (req, res, next) => {
     if (req.originalUrl.startsWith('/api')) {
       return next();
